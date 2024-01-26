@@ -129,21 +129,46 @@ let msg: 'Hello' = 'Hello';
 
 msg = 'Hello';
 
-const port3000: number = 3000;
-const port3001: number = 3001;
+// type Config = {protocol: 'http' | 'https', port: 3000 | 3001};
+interface Config {
+	protocol: 'http' | 'https', 
+	port: 3000 | 3001,
+	log: (msg: string) => void
+};
 
+// type Role = {role: string};
+// type ConfigWithRole = Config & Role;
 
-const startServer = (protocol: 'http' | 'https', port: 3000 | 3001): 'Server started' => {
-	if(port === port3000 || port === port3001) {
-		console.log(`${protocol}://localhost:${port}/`);
-	} else {
-		console.error('Wrong port number');
-	}
+interface Role {role: string}
+
+interface ConfigWithRole extends Config, Role {};
+
+const serverConfig: ConfigWithRole = {
+	protocol: 'https',
+	port: 3001,
+	role: 'admin',
+	log: (msg: string): void => console.log(msg)
+};
+
+// const backupConfig: ConfigWithRole = {
+// 	protocol: 'http',
+// 	port: 3000,
+// 	role: 'user'
+// };
+
+type StartFunction = (protocol: 'http' | 'https', port: 3000 | 3001, log: (msg: string) => void) => string;
+
+const startServer: StartFunction = (
+	protocol: 'http' | 'https', 
+	port: 3000 | 3001,
+	log: (msg: string) => void
+): 'Server started' => {
+	log(`${protocol}://localhost:${port}/`);
 	
 	return 'Server started';
 };
 
-console.log(startServer('http', 3000));
+console.log(startServer(serverConfig.protocol, serverConfig.port, serverConfig.log));
 
 type AnimationTiming = 'ease' | 'ease-out' | 'ease-in';
 type AnimationId = string | number;
@@ -157,3 +182,17 @@ const createAnimation = (id: AnimationId, animName: string, timingFunc: Animatio
 };
 
 console.log(createAnimation(1, 'test', 'ease-out', 1, 'infinite'))
+
+interface Styles {
+	[key: string]: string
+};
+
+const styles: Styles = {
+	position: 'absolute',
+	top: '20px',
+	left: '20px',
+   width: '100px',
+   height: '100px',
+   backgroundColor: 'blue',
+   animation: 'blink 1s infinite'
+}
