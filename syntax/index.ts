@@ -250,23 +250,118 @@
 // // basicPorts[0] = 5;
 // basicPorts.push(2);
 //////////////////////////////////////////////////////////////////////////////////////////////
-enum Directions {
-	TOP,
-	BOTTOM,
-	RIGHT,
-	LEFT
+// enum Directions {
+// 	TOP,
+// 	BOTTOM,
+// 	RIGHT,
+// 	LEFT
+// }
+
+// enum TimingFunc {
+// 	EASE = 'ease',
+//    EASE_OUT = 'ease-out',
+//    EASE_IN = 'ease-in'
+// }
+
+// function frame(elem: string, direction: Directions, tFunc: TimingFunc): void {
+// 	if(direction === Directions.TOP) {
+// 		console.log(tFunc);
+// 	}
+// }
+
+// frame('id', Directions.TOP, TimingFunc.EASE_OUT);
+////////////////////////////////////////////////////////////////////////////////////////////
+// let smth: unknown;
+
+// smth = 'str';
+
+// let data: string[] = smth;
+
+// data.find(e => e);
+
+// const someValue: unknown = 10;
+// someValue.method();
+
+// function fetchData(data: unknown): void {
+// 	if(typeof data === 'string') {
+// 		console.log('Its a string');
+// 	} else if(typeof data === 'number') {
+// 		console.log('Its a number');
+// 	} else if(typeof data === 'boolean') {
+// 		console.log('Its a boolean');
+// 	} else {
+// 		console.log('Error')
+// 	}
+// }
+
+// const userData = '{"isBirthday": true, "name": "Ihoe", "age": 30}';
+
+// function safeParse(s: string): unknown {
+// 	return JSON.parse(s);
+// }
+
+// const data = safeParse(userData);
+
+// function transherData(d: unknown): void {
+// 	if(typeof d === 'string') {
+// 		console.log(d.toLowerCase);
+// 	} else if(typeof d === 'object' && d) {
+// 		console.log(data);
+// 	} else {
+// 		console.error('Error');
+// 	}
+// }
+
+// const dataFromControl = {
+// 	water: 200,
+// 	el: 350,
+// };
+ 
+// function checkReadings(data: typeof dataFromControl): boolean {
+// 	const dataFromUser = {
+// 	  water: 200,
+// 	  el: 350,
+// 	};
+ 
+// 	if (data.el == dataFromUser.el && data.water == dataFromUser.water) {
+// 	  return true;
+// 	} else return false;
+// }
+
+// const P = 3.14;
+
+// let PClone: typeof P;
+////////////////////////////////////////////////////////////////////////////////////////////
+// const dataFromControl = {
+// 	water: 200,
+// 	el: 350,
+// };
+ 
+// function checkReadings(data: typeof dataFromControl): boolean {
+// 	const dataFromUser = {
+// 	  water: 200,
+// 	  el: 350,
+// 	};
+// }
+////////////////////////////////////////////////////////////////////////////////////////////
+const fetchData = (url: string, method: "GET" | "POST"): void => {
+	console.log(method)
+};
+
+const reqOptions = {
+	url: 'https://jsonplaceholder.typicode.com/todos/1',
+	method: "GET" as "GET",
+	// method: "GET"
 }
 
-enum TimingFunc {
-	EASE = 'ease',
-   EASE_OUT = 'ease-out',
-   EASE_IN = 'ease-in'
-}
+// const reqOptions = {
+// 	url: 'https://jsonplaceholder.typicode.com/todos/1',
+// 	method: "GET"
+// } as const;
 
-function frame(elem: string, direction: Directions, tFunc: TimingFunc): void {
-	if(direction === Directions.TOP) {
-		console.log(tFunc);
-	}
-}
+fetchData('qqq', 'GET');
 
-frame('id', Directions.TOP, TimingFunc.EASE_OUT);
+// fetchData(reqOptions.url, reqOptions.method as "GET");
+// fetchData(reqOptions.url, reqOptions.method as "GET");
+// fetchData(reqOptions.url, <"GET">reqOptions.method);
+fetchData(reqOptions.url, reqOptions.method);
