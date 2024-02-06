@@ -125,30 +125,30 @@
 // 	}
 // };
 //////////////////////////////////////////////////////////////////////////////////////////////
-let msg: 'Hello' = 'Hello';
+// let msg: 'Hello' = 'Hello';
 
-msg = 'Hello';
+// msg = 'Hello';
 
 // type Config = {protocol: 'http' | 'https', port: 3000 | 3001};
-interface Config {
-	protocol: 'http' | 'https', 
-	port: 3000 | 3001,
-	log: (msg: string) => void
-};
+// interface Config {
+// 	protocol: 'http' | 'https', 
+// 	port: 3000 | 3001,
+// 	log: (msg: string) => void
+// };
 
 // type Role = {role: string};
 // type ConfigWithRole = Config & Role;
 
-interface Role {role: string}
+// interface Role {role: string}
 
-interface ConfigWithRole extends Config, Role {};
+// interface ConfigWithRole extends Config, Role {};
 
-const serverConfig: ConfigWithRole = {
-	protocol: 'https',
-	port: 3001,
-	role: 'admin',
-	log: (msg: string): void => console.log(msg)
-};
+// const serverConfig: ConfigWithRole = {
+// 	protocol: 'https',
+// 	port: 3001,
+// 	role: 'admin',
+// 	log: (msg: string): void => console.log(msg)
+// };
 
 // const backupConfig: ConfigWithRole = {
 // 	protocol: 'http',
@@ -156,43 +156,117 @@ const serverConfig: ConfigWithRole = {
 // 	role: 'user'
 // };
 
-type StartFunction = (protocol: 'http' | 'https', port: 3000 | 3001, log: (msg: string) => void) => string;
+// type StartFunction = (protocol: 'http' | 'https', port: 3000 | 3001, log: (msg: string) => void) => string;
 
-const startServer: StartFunction = (
-	protocol: 'http' | 'https', 
-	port: 3000 | 3001,
-	log: (msg: string) => void
-): 'Server started' => {
-	log(`${protocol}://localhost:${port}/`);
+// const startServer: StartFunction = (
+// 	protocol: 'http' | 'https', 
+// 	port: 3000 | 3001,
+// 	log: (msg: string) => void
+// ): 'Server started' => {
+// 	log(`${protocol}://localhost:${port}/`);
 	
-	return 'Server started';
-};
+// 	return 'Server started';
+// };
 
-console.log(startServer(serverConfig.protocol, serverConfig.port, serverConfig.log));
+// console.log(startServer(serverConfig.protocol, serverConfig.port, serverConfig.log));
 
-type AnimationTiming = 'ease' | 'ease-out' | 'ease-in';
-type AnimationId = string | number;
+// type AnimationTiming = 'ease' | 'ease-out' | 'ease-in';
+// type AnimationId = string | number;
 
-const createAnimation = (id: AnimationId, animName: string, timingFunc: AnimationTiming = 'ease', duration: number, iteration: "infinite" | number): void => {
+// const createAnimation = (id: AnimationId, animName: string, timingFunc: AnimationTiming = 'ease', duration: number, iteration: "infinite" | number): void => {
 	// const elem = document.querySelector(`#${id}`) as HTMLElement;
 
 	// elem ? elem.style.animation = `${animName} ${timingFunc} ${duration}s ${iteration}` : console.log(`${animName} ${timingFunc} ${duration}s ${iteration}`);
 
-	console.log(`${animName} ${timingFunc} ${duration}s ${iteration}`);
-};
+// 	console.log(`${animName} ${timingFunc} ${duration}s ${iteration}`);
+// };
 
-console.log(createAnimation(1, 'test', 'ease-out', 1, 'infinite'))
+// console.log(createAnimation(1, 'test', 'ease-out', 1, 'infinite'))
 
-interface Styles {
-	[key: string]: string
-};
+// interface Styles {
+// 	[key: string]: string
+// };
 
-const styles: Styles = {
-	position: 'absolute',
-	top: '20px',
-	left: '20px',
-   width: '100px',
-   height: '100px',
-   backgroundColor: 'blue',
-   animation: 'blink 1s infinite'
+// const styles: Styles = {
+// 	position: 'absolute',
+// 	top: '20px',
+// 	left: '20px',
+//    width: '100px',
+//    height: '100px',
+//    backgroundColor: 'blue',
+//    animation: 'blink 1s infinite'
+// }
+//////////////////////////////////////////////////////////////////////////////////////////////
+// let salary;
+// salary = 500;
+
+// interface userData {
+// 	isBirthday: boolean,
+// 	name: string,
+//    age: number
+// }
+
+// const userData = '{"isBirthday": true, "name": "Ihoe", "age": 30}';
+
+// const userObj: userData = JSON.parse(userData);
+// console.log(userObj.smt);
+
+// const isOkay = true;
+// let movement: boolean | string = false;
+
+// isOkay ? movement = 'moving' : movement = false;
+//////////////////////////////////////////////////////////////////////////////////////////////
+// interface User {
+// 	readonly login: string,
+// 	password: string,
+// 	age: number,
+	// adress?: string,
+// 	adress: string | undefined,
+// 	parents?: {
+// 		mom?: string,
+// 		dad?: string
+// 	}
+// }
+
+// const user: User = {
+// 	login: 'Ihoe',
+//    password: 'aboba',
+//    age: 30,
+//    adress: 'Odesa'
+// }
+
+// const dbName = '123123';
+
+// function sendUserData(obj: User, db?: string):void {
+// 	console.log(obj, db?.toUpperCase)
+// }
+
+// class Animal {
+// 	readonly name: string = 'name';
+// }
+
+// const basicPorts: readonly [number, ...string[]] = [80, 'asda', 'asdasd', 'asdasd'];
+
+// // basicPorts[0] = 5;
+// basicPorts.push(2);
+//////////////////////////////////////////////////////////////////////////////////////////////
+enum Directions {
+	TOP,
+	BOTTOM,
+	RIGHT,
+	LEFT
 }
+
+enum TimingFunc {
+	EASE = 'ease',
+   EASE_OUT = 'ease-out',
+   EASE_IN = 'ease-in'
+}
+
+function frame(elem: string, direction: Directions, tFunc: TimingFunc): void {
+	if(direction === Directions.TOP) {
+		console.log(tFunc);
+	}
+}
+
+frame('id', Directions.TOP, TimingFunc.EASE_OUT);
